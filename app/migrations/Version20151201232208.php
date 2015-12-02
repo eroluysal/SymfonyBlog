@@ -30,8 +30,9 @@ class Version20151201232208 extends AbstractMigration
         $table->addColumn('created_at', 'datetime')->setNotnull(true);
         $table->addColumn('updated_at', 'datetime')->setNotnull(true);
 
+        $table->addIndex(['user_id'], 'user');
+        $table->addIndex(['post_id'], 'post');
         $table->setPrimaryKey(['id']);
-        $table->addIndex(['user_id', 'post_id']);
     }
 
     /**
