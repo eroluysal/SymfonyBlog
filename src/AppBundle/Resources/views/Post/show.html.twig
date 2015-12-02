@@ -1,0 +1,27 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+  <div class="page__content">
+    <h1>{{ post.title }}</h1>
+    {{ post.content|nl2br }}
+  </div>
+  <hr>
+  <div class="page__comments">
+    <h3>Yorumlar</h3>
+    {% for comment in post.comments %}
+      <div class="comment">
+        <div>
+          <strong class="comment__author-name">{{ comment.user.name }}: </strong>
+          <em>{{ comment.createdAt|date("m/d/Y") }}</em>
+        </div>
+        <div>
+          {{ comment.comment|format }}
+        </div>
+      </div>
+    {% else %}
+      görüntülecek yorum yok
+    {% endfor %}
+  </div>
+{% endblock %}
